@@ -1,6 +1,11 @@
 from stats import count_text, count_character, sort_dict
+import sys
 
-filepath = "./books/frankenstein.txt"
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
+filepath = sys.argv[1]
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -21,7 +26,7 @@ tally = count_character(get_book_text(filepath))
 result = sort_dict(tally)
 
 print("============ BOOKBOT ============")
-print(f"Analyzing book found at books/frankenstein.txt...")
+print(f"Analyzing book found at {filepath}")
 print("----------- Word Count ----------")
 print(f"Found {word_count} total words")
 print("--------- Character Count -------")
